@@ -106,8 +106,43 @@ function initModal(){
   }
 }
 
+function initDropDownMenu(){
+  const dropDownMenus = document.querySelectorAll('[data-dropdown]');
+  const html = document.documentElement;
+
+  dropDownMenus.forEach(menu => {
+    menu.addEventListener('click', handleClick);
+    menu.addEventListener('touchstart', handleClick);
+  });
+
+  handleClick((event) =>{
+    event.preventDefault();
+    dropDownMenus.forEach(menu => {
+      menu.addEventListener('click', outsideClick);
+      menu.addEventListener('touchstart', outsideClick);
+    });
+    this.classList.toggle('ativo');
+  });
+
+  outsideClick(() => {
+
+    console.log(this);
+  })
+
+  handleOutClick((event) =>{
+    event.preventDefault();
+    html.removeEventListener('click', outsideClick);
+    html.removeEventListener('touchstart', outsideClick);
+    console.log(html);
+    console.log('FOI REMOVIDO O LISTE');
+  });
+
+}
+
+
 initModal();
 initTabNav();
 initAccordion();
 initScroolSuave();
 initanimaScroll();
+initDropDownMenu();

@@ -382,3 +382,74 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   margin-top: 1rem;
 }
+
+
+
+.dropdown-menu{
+  position: absolute;
+  top: 32px;
+  background: #e54;
+  border: 2px solid #333;
+  z-index: 200
+}
+
+[data-dropdown]{
+  position: relative;
+}
+
+[data-dropdown] .dropdown-menu{
+  display: none;
+}
+
+[data-dropdown].ativo .dropdown-menu{
+  animation: show-up .3s forwards;
+  display: flex;
+}
+
+.dropdown-menu::before{
+  content: '▲';
+  display: block;
+  position: absolute;
+  top: -10px;
+  width: 0px;
+  height: 0px;
+  color: #e54;
+}
+
+.dropdown-menu li a:hover{
+  color: white;
+}
+
+@keyframes show-up {
+  from{
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to{
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
